@@ -128,4 +128,15 @@ public class Requests {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    // all game result
+    @RequestMapping(value = "/status", method = RequestMethod.PUT)
+    public ResponseEntity<Void> gameStatus(@RequestBody StringsAndInt stringsAndInt) {
+        try {
+            LOGGER.info("Game result: " + stringsAndInt.getGameStatus());
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
